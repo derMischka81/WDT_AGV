@@ -25,12 +25,11 @@ int main(int argc, char **argv) {
  ros::Rate loop_rate(1);
   ros::NodeHandle n;
 
-
     if ( ! InitWDT() ) {
         printf("InitWDT <-- ERROR\n");
         return -1;
     }
-    if ( ! SetWDT(10, 1) ) {
+    if ( ! SetWDT(5, 1) ) {
         printf("SetWDT <-- ERROR\n");
         return -1;
     }
@@ -39,21 +38,27 @@ int main(int argc, char **argv) {
         return -1;
     }
     printf("The Watch-dog Timer was activated\n");
-//
-//    for ( i=0; 30 > i; ++i ) {
-//        printf("just pass %2d seconds\n", i);
-//        sleep(1);
-//    }
-
 
     int  i=0;
 
+//    for ( i=0; 20 > i; ++i ) {
+//        printf("just pass %2d seconds\n", i);
+//        sleep(1);
+//    }
+//
+//    ResetWDT();
+//    StopWDT();
+//    return 0;
+
 while (ros::ok()) {
-ROS_INFO("%d seconds passed",i);
-    ResetWDT();
+ROS_INFO("%d seconds passed",++i);
+    if ( ! ResetWDT() ) {
+        printf("ResetWDT <-- ERROR\n");
+        return -1;
+    }
+    ROS_INFO("reset\n");
 
     ros::spinOnce();
-
     loop_rate.sleep();
   }
 }
