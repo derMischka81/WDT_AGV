@@ -19,27 +19,28 @@ extern "C" {
 }
 
 using namespace std;
-int main(int argc, char **argv) {
- ros::init(argc, argv, "ur_twist_server");
-  ros::NodeHandle nh;
- ros::Rate loop_rate(1);
-  ros::NodeHandle n;
 
-    if ( ! InitWDT() ) {
+int main(int argc, char **argv) {
+    ros::init(argc, argv, "ur_twist_server");
+    ros::NodeHandle nh;
+    ros::Rate loop_rate(1);
+    ros::NodeHandle n;
+
+    if (!InitWDT()) {
         printf("InitWDT <-- ERROR\n");
         return -1;
     }
-    if ( ! SetWDT(5, 1) ) {
+    if (!SetWDT(5, 1)) {
         printf("SetWDT <-- ERROR\n");
         return -1;
     }
-    if ( ! StartWDT() ) {
+    if (!StartWDT()) {
         printf("StartWDT <-- ERROR\n");
         return -1;
     }
     printf("The Watch-dog Timer was activated\n");
 
-    int  i=0;
+    int i = 0;
 
 //    for ( i=0; 20 > i; ++i ) {
 //        printf("just pass %2d seconds\n", i);
@@ -50,17 +51,19 @@ int main(int argc, char **argv) {
 //    StopWDT();
 //    return 0;
 
-while (ros::ok()) {
-ROS_INFO("%d seconds passed",++i);
-    if ( ! ResetWDT() ) {
-        printf("ResetWDT <-- ERROR\n");
-        return -1;
-    }
-    ROS_INFO("reset\n");
+//while (ros::ok()) {
+    while (1) {
+        ROS_INFO("%d seconds passed", ++i);
+        if (!SetWDT(5, 1)) {
+            printf("ResetWDT <-- ERROR\n");
+            return -1;
+        }
+        ROS_INFO("reset\n");
 
-    ros::spinOnce();
-    loop_rate.sleep();
-  }
+        ros::spinOnce();
+//        sleep(1);
+        loop_rate.sleep();
+    }
 }
 
 
