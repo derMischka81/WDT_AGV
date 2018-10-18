@@ -54,10 +54,10 @@ int main(int argc, char **argv) {
 //while (ros::ok()) {
     while (1) {
         ROS_INFO("%d seconds passed", ++i);
-        // if (!SetWDT(5, 1)) {
-        //     printf("ResetWDT <-- ERROR\n");
-        //     return -1;
-        // }
+        if (!SetWDT(5, 1)) {
+            printf("ResetWDT <-- ERROR\n");
+            return -1;
+        }
         ROS_INFO("reset\n");
 
         ros::spinOnce();
