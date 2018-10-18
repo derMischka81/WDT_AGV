@@ -58,7 +58,7 @@ int main(int argc, char **argv) {
         //     printf("ResetWDT <-- ERROR\n");
         //     return -1;
         // }
-        ROS_INFO("reset\n");
+        //ROS_INFO("reset\n");
 
         ros::spinOnce();
 //        sleep(1);
