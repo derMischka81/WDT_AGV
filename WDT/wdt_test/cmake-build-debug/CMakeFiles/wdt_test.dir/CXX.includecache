@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/wdt_dio.h
+
+/home/agv/agv/WDT/wdt_test/test_wdt.cpp
+stdio.h
+-
+unistd.h
+-
+fcntl.h
+-
+string.h
+-
+sys/ioctl.h
+-
+sys/types.h
+-
+sys/stat.h
+-
+wdt_dio.h
+/home/agv/agv/WDT/wdt_test/wdt_dio.h
+

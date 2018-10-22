@@ -1,0 +1,4 @@
+/home/agv/clion-2018.2.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/agv/agv/WDT/wdt_test
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/agv/agv/WDT/wdt_test/cmake-build-debug

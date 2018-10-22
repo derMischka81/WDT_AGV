@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/wdt_test.dir/test_wdt.cpp.o  -o wdt_test 
